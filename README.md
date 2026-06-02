@@ -6,6 +6,13 @@ This project demonstrates a high-availability enterprise network design, featuri
 ## 🗺️ Topology
 ![Network Topology](./Topology/network_design.png)
 
+### 🛠️ Core Architecture & Design Choices
+
+* **High Availability (L3 Redundancy):** Implemented **HSRP** across Core Switches (`HQ-SW1-L3` and `HQ-SW2-L3`) to ensure seamless gateway redundancy for critical enterprise segments (HR, IT, Servers).
+* **Scalable Routing Domain:** Deployed **Multi-Area OSPF** to optimize routing efficiency and limit LSA flooding across the enterprise. Structured the network with a backbone area (Area 0) at the Core/HQ, interconnected with non-backbone areas for branch offices and specific network segments, ensuring proper area boundaries and summarization potential.
+* **Secure Connectivity:** Deployed a **Site-to-Site IPsec VPN Tunnel** between HQ and Branch routers over a simulated internet connection to secure cross-site traffic.
+* **Layer 2 Security & Optimization:** Fine-tuned **STP/RSTP** (Root Bridge election, priority tuning) to guarantee a loop-free topology, paired with **DHCP Snooping** and **Dynamic ARP Inspection (DAI)** to mitigate MITM attacks.
+
 ## 🛠️ Technical Documentation
 
 ## 🌐 Network Infrastructure & Connectivity (L3/WAN)
